@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build Your First Trading Bot</title>
+    <meta
+      name="description"
+      content="Companion site for the Build Your First Trading Bot ebook — an event-driven, broker-agnostic Python trading bot framework."
+    />
+
+    <!--
+      GitHub Pages has no server-side routing: any direct hit on a deep link like
+      /BuildYourFirstTradingBot returns 404.html. This inline script (paired with the
+      matching one in public/404.html) restores the intended path before React Router
+      mounts, so clean URLs and page refreshes/deep links both work.
+      Pattern: https://github.com/rafgraph/spa-github-pages
+    -->
+    <script>
+      (function () {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, "", redirect);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
