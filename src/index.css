@@ -144,6 +144,22 @@ pre {
   margin: 0.75rem 0;
 }
 
+.provider-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.provider-list .step-action {
+  margin: 0;
+}
+
+.provider-list .affiliate-button {
+  justify-content: space-between;
+  width: 12rem;
+}
+
 .affiliate-button {
   display: inline-flex;
   align-items: center;

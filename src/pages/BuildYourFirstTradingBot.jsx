@@ -1,5 +1,5 @@
 import AffiliateButton from "../components/AffiliateButton.jsx";
-import { AFFILIATE_LINKS } from "../config/affiliateLinks.js";
+import { AFFILIATE_LINKS, VPS_PROVIDERS } from "../config/affiliateLinks.js";
 
 const REPO_URL = "https://github.com/chunyap28/your-first-trading-bot";
 const EBOOK_URL =
@@ -10,7 +10,7 @@ export default function BuildYourFirstTradingBot() {
     <main className="page">
       <header className="hero">
         <p className="eyebrow">Build Your First Trading Bot</p>
-        <h1>Setup guide: OANDA &amp; Kamatera</h1>
+        <h1>Setup guide: broker &amp; cloud VPS</h1>
         <p className="hero-sub">
           This page is the companion referenced of the book "Build Your First Trading Bot": recommended broker
           sandbox access and cloud infrastructure for the event-driven trading
@@ -40,10 +40,15 @@ export default function BuildYourFirstTradingBot() {
             Sign up for a free OANDA practice account (no funding required —
             it comes preloaded with virtual currency for demo trading).
             <div className="step-action">
-              <AffiliateButton href={AFFILIATE_LINKS.oanda}>
+              <AffiliateButton
+                href={AFFILIATE_LINKS.oanda.href}
+                isAffiliate={AFFILIATE_LINKS.oanda.isAffiliate}
+              >
                 Open a free OANDA practice account
               </AffiliateButton>
-              <span className="affiliate-tag">affiliate link</span>
+              {AFFILIATE_LINKS.oanda.isAffiliate && (
+                <span className="affiliate-tag">affiliate link</span>
+              )}
             </div>
           </li>
           <li>
@@ -78,21 +83,31 @@ OANDA_ENV=practice`}</code>
         </div>
       </section>
 
-      <section className="card" id="kamatera" aria-labelledby="kamatera-heading">
+      <section className="card" id="vps" aria-labelledby="vps-heading">
         <div className="card-kicker">Chapter 7 · Going Live</div>
-        <h2 id="kamatera-heading">2. Provision a cloud VPS with Kamatera</h2>
+        <h2 id="vps-heading">2. Provision a cloud VPS</h2>
         <p>
           To keep the bot running 24/5 independently of your laptop, Chapter 7
-          containerizes it with Docker and deploys it to a cloud VPS. Kamatera
-          offers hourly billing and a free trial, making it a low-risk way to
-          run an always-on 1 vCPU / 1 GB instance.
+          containerizes it with Docker and deploys it to a cloud VPS. Any
+          provider that gives you a plain Ubuntu box works — here are a couple
+          of options with hourly/low-cost plans, enough for an always-on 1
+          vCPU / 1 GB instance:
         </p>
 
-        <div className="step-action">
-          <AffiliateButton href={AFFILIATE_LINKS.kamatera}>
-            Get started with Kamatera
-          </AffiliateButton>
-          <span className="affiliate-tag">affiliate link</span>
+        <div className="provider-list">
+          {VPS_PROVIDERS.map((provider) => (
+            <div className="step-action" key={provider.id}>
+              <AffiliateButton
+                href={provider.href}
+                isAffiliate={provider.isAffiliate}
+              >
+                {provider.name}
+              </AffiliateButton>
+              {provider.isAffiliate && (
+                <span className="affiliate-tag">affiliate link</span>
+              )}
+            </div>
+          ))}
         </div>
 
         <h3>VPS requirements (matches Chapter 7)</h3>
@@ -105,7 +120,7 @@ OANDA_ENV=practice`}</code>
 
         <ol className="steps">
           <li>
-            In the Kamatera console, create a new server: choose{" "}
+            In your chosen provider's console, create a new server: choose{" "}
             <strong>Ubuntu 24.04 LTS</strong>, the smallest general-purpose
             plan (1 vCPU / 1 GB RAM / 20 GB SSD is enough for this bot), and a
             region close to your broker's servers for lower latency.
@@ -119,7 +134,7 @@ OANDA_ENV=practice`}</code>
 $ apt update && apt install -y git docker.io docker-compose-plugin`}</code>
             </pre>
           </li>
-        </ol>        
+        </ol>
       </section>
     </main>
   );
