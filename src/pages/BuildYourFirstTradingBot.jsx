@@ -2,8 +2,11 @@ import AffiliateButton from "../components/AffiliateButton.jsx";
 import { AFFILIATE_LINKS, VPS_PROVIDERS } from "../config/affiliateLinks.js";
 
 const REPO_URL = "https://github.com/chunyap28/your-first-trading-bot";
-const EBOOK_URL =
-  "https://docs.google.com/document/d/1M6QHvUPI5S3vUC36Htonc8Y2O6Xpuyx-_813UIhxQmw";
+const EBOOK_URL = "https://www.amazon.com/dp/B0HG4J3RG9";
+const EBOOK_TITLE =
+  "Build Your First Trading Bot: Building A Python Trading Bots Using An Event-Driven Software Engineering Approach";
+const EBOOK_DESCRIPTION =
+  "A step-by-step guide to building an event-driven, broker-agnostic Python trading bot — the book this companion site supports.";
 
 export default function BuildYourFirstTradingBot() {
   return (
@@ -17,6 +20,29 @@ export default function BuildYourFirstTradingBot() {
           bot you build across Chapters 2–7. It fills in the account creation
           and VPS provisioning steps the book intentionally keeps brief.
         </p>
+        <a
+          className="book-card"
+          href={EBOOK_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            className="book-card__cover"
+            src="/images/ebook-cover.jpg"
+            alt={`Cover of "${EBOOK_TITLE}"`}
+            width="120"
+            height="150"
+            loading="lazy"
+          />
+          <div className="book-card__body">
+            <p className="book-card__title">{EBOOK_TITLE}</p>
+            <p className="book-card__description">{EBOOK_DESCRIPTION}</p>
+            <span className="book-card__cta">
+              Get it on Amazon
+              <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </a>
       </header>
 
       <div className="disclosure">

@@ -1,6 +1,6 @@
 # papa-trading-bot
 
-Companion website for the [**Build Your First Trading Bot**](https://docs.google.com/document/d/1M6QHvUPI5S3vUC36Htonc8Y2O6Xpuyx-_813UIhxQmw) ebook.
+Companion website for the [**Build Your First Trading Bot**](https://www.amazon.com/dp/B0HG4J3RG9) ebook.
 
 A small React + React Router single-page app deployed to GitHub Pages. The
 `/BuildYourFirstTradingBot` route is the setup page the book itself refers
